@@ -226,14 +226,14 @@ function getRectangleString(/* width, height */) {
 function encodeToRot13(str) {
   const iN = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ?!';
   const oUT = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm ?!';
-  let encrypt = '';
+  let enc = '';
 
   for (let i = 0; i < str.length; i += 1) {
     const item = iN.indexOf(str[i]);
-    encrypt += oUT[item];
+    enc += oUT[item];
   }
 
-  return encrypt;
+  return enc;
 }
 
 /**
@@ -249,8 +249,8 @@ function encodeToRot13(str) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
 
 
