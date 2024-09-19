@@ -356,9 +356,14 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(/* pathes */) {
+  // const arr = pathes.map((_, i) => pathes[i].split('/'));
+  // arr.map((e, i) => console.log(e[i]));
+
+  // return arr;
+  // return pathes.map((_, i) => pathes[i].split('/').splice());
+  // return pathes.map((_, i) => pathes[i].indexOf('/'));
   throw new Error('Not implemented');
 }
-
 
 /**
  * Returns the product of two specified matrixes.
