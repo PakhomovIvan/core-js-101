@@ -159,7 +159,7 @@ function isInsideCircle(/* circle, point */) {
 /**
  * Returns the first non repeated char in the specified strings otherwise returns null.
  *
- * @param {string} str
+ * @param {string} char
  * @return {string}
  *
  * @example:
@@ -167,8 +167,13 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(char) {
+  for (let i = 0; i < char.length; i += 1) {
+    if ((char.split(char[i]).length - 1) === 1) {
+      return char[i];
+    }
+  }
+  return null;
 }
 
 // console.log(findFirstSingleChar('The quick brown fox jumps over the lazy dog'));
@@ -285,7 +290,7 @@ function getDigitalRoot(num) {
   const arr = Array.from(String(num), Number);
   const arrSum = arr.reduce((sum, e) => sum + e, 0);
 
-  return arrSum > 9 ? (Array.from(String(arrSum), Number)).reduce((sum, e) => sum + e, 0) : arrSum;
+  return arrSum > 9 ? getDigitalRoot(arrSum) : arrSum;
 }
 
 /**
