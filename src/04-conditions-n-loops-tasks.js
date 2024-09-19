@@ -168,13 +168,6 @@ function isInsideCircle(/* circle, point */) {
  *   'entente' => null
  */
 function findFirstSingleChar(/* str */) {
-  // const arr = str.split(' ');
-  // arr.forEach((e) => {
-  //   for (let i = 0; i < e.length; i += 1) {
-  //     i
-  //   }
-  // });
-  // return arr;
   throw new Error('Not implemented');
 }
 
@@ -288,10 +281,12 @@ function isCreditCardNumber(/* ccn */) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
-}
+function getDigitalRoot(num) {
+  const arr = Array.from(String(num), Number);
+  const arrSum = arr.reduce((sum, e) => sum + e, 0);
 
+  return arrSum > 9 ? (Array.from(String(arrSum), Number)).reduce((sum, e) => sum + e, 0) : arrSum;
+}
 
 /**
  * Returns true if the specified string has the balanced brackets and false otherwise.
