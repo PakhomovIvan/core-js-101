@@ -512,7 +512,6 @@ function distinct(arr) {
 function group(arr, key, value) {
   const resObj = {};
 
-  // eslint-disable-next-line array-callback-return
   arr.map((e) => {
     if (!resObj[key(e)]) {
       resObj[key(e)] = [];
