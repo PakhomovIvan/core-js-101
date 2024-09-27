@@ -235,8 +235,10 @@ function toArrayOfSquares(arr) {
  */
 function getMovingSum(arr) {
   let acc = 0;
-  // eslint-disable-next-line no-return-assign
-  return arr.map((e) => acc += e);
+
+  return arr.map((e) => {
+    acc += e; return acc;
+  });
 }
 
 /**
@@ -511,14 +513,12 @@ function distinct(arr) {
  */
 function group(arr, key, value) {
   const resObj = {};
-
-  // eslint-disable-next-line array-callback-return
   arr.map((e) => {
     if (!resObj[key(e)]) {
       resObj[key(e)] = [];
     } resObj[key(e)].push(value(e));
+    return Object.entries(resObj);
   });
-
   return Object.entries(resObj);
 }
 
