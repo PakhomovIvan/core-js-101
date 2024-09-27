@@ -509,10 +509,18 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
+function group(/* arr, key, value */) {
+  // const resObj = {};
+
+  // Object.keys(arr).foreach((e) => {
+  //   if (!resObj[key(e)]) {
+  //     resObj[key(e)] = [];
+  //   } resObj[key(e)].push(value(e));
+  // });
+
+  // return Object.entries(resObj);
   throw new Error('Not implemented');
 }
-
 
 /**
  * Projects each element of the specified array to a sequence
