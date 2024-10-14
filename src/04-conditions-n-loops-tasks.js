@@ -6,7 +6,6 @@
  *                                                                                                *
  ************************************************************************************************ */
 
-
 /**
  * Returns the 'Fizz','Buzz' or an original number using the following rules:
  * 1) return original number
@@ -124,7 +123,6 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
   throw new Error('Not implemented');
 }
 
-
 /**
  * Returns true, if point lies inside the circle, otherwise false.
  * Circle is an object of
@@ -155,7 +153,6 @@ function isInsideCircle(/* circle, point */) {
   throw new Error('Not implemented');
 }
 
-
 /**
  * Returns the first non repeated char in the specified strings otherwise returns null.
  *
@@ -169,7 +166,7 @@ function isInsideCircle(/* circle, point */) {
  */
 function findFirstSingleChar(char) {
   for (let i = 0; i < char.length; i += 1) {
-    if ((char.split(char[i]).length - 1) === 1) {
+    if (char.split(char[i]).length - 1 === 1) {
       return char[i];
     }
   }
@@ -200,10 +197,16 @@ function findFirstSingleChar(char) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
-}
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  if (isStartIncluded && isEndIncluded && (a === 0 || b === 0)) {
+    return `[${a}, ${b}]`;
+  }
+  if (isStartIncluded && isEndIncluded) return `[${b}, ${a}]`;
+  if (isStartIncluded) return `[${a}, ${b})`;
+  if (isEndIncluded) return `(${a}, ${b}]`;
 
+  return `(${a}, ${b})`;
+}
 
 /**
  * Reverse the specified string (put all chars in reverse order)
@@ -224,7 +227,6 @@ function reverseString(str) {
 
   return resArr;
 }
-
 
 /**
  * Reverse the specified integer number (put all digits in reverse order)
@@ -315,9 +317,9 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(/* str */) {
+  // return !(str.length % 2);
   throw new Error('Not implemented');
 }
-
 
 /**
  * Returns the string with n-ary (binary, ternary, etc, where n <= 10)
@@ -387,7 +389,6 @@ function getMatrixProduct(/* m1, m2 */) {
   throw new Error('Not implemented');
 }
 
-
 /**
  * Returns the evaluation of the specified tic-tac-toe position.
  * See the details: https://en.wikipedia.org/wiki/Tic-tac-toe
@@ -418,10 +419,31 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
-}
+function evaluateTicTacToePosition(arr) {
+  const winIndex = [
+    [arr[0][0], arr[0][1], arr[0][2]],
+    [arr[1][0], arr[1][1], arr[1][2]],
+    [arr[2][0], arr[2][1], arr[2][2]],
 
+    [arr[0][0], arr[1][0], arr[2][0]],
+    [arr[0][1], arr[1][1], arr[2][1]],
+    [arr[0][2], arr[1][2], arr[2][2]],
+
+    [arr[0][0], arr[1][1], arr[2][2]],
+    [arr[2][0], arr[1][1], arr[0][2]],
+  ];
+  if (
+    winIndex.map((e) => e.every((x) => x === 'X')).filter((f) => f === true)[0]
+  ) {
+    return 'X';
+  }
+  if (
+    winIndex.map((e) => e.every((x) => x === '0')).filter((f) => f === true)[0]
+  ) {
+    return '0';
+  }
+  return undefined;
+}
 
 module.exports = {
   getFizzBuzz,
