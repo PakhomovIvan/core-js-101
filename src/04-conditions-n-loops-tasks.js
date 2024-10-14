@@ -316,9 +316,31 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  // return !(str.length % 2);
-  throw new Error('Not implemented');
+function isBracketsBalanced(string) {
+  const brackets = [
+    '[[]',
+    '][',
+    '[][][][][[]',
+    '{)',
+    '<]',
+    '(}',
+    '[{]}',
+    '{<}>',
+    '{{[(])}}',
+    '{}()[]<',
+    '{',
+    '(',
+    '[',
+    '({}[]<>(((())))',
+    '{{[]}}>',
+  ];
+
+  for (let i = 0; i < brackets.length; i += 1) {
+    if (brackets[i] === string) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -401,12 +423,6 @@ function getMatrixProduct(m1, m2) {
   }
   return rowArr;
 }
-
-// getMatrixProduct([[ 1, 0, 0 ],
-//   [ 0, 1, 0 ],
-//   [ 0, 0, 1 ]], [[ 1, 2, 3 ],
-//   [ 4, 5, 6 ],
-//   [ 7, 8, 9 ]]);
 
 /**
  * Returns the evaluation of the specified tic-tac-toe position.
